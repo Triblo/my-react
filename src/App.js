@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person';
+import userOutput from './UserOutput/UserOutput';
+import userInput from './UserInput/UserInput';
 
 class App extends Component {
   state = {
@@ -9,7 +11,6 @@ class App extends Component {
       { name: 'Jeff', age: 30 },
       { name: 'Max', age: 27 },
     ],
-    otherState: "some other value"
   };
 
   switchNameHandler = (newName) => {
@@ -30,7 +31,16 @@ class App extends Component {
       { name: 'Max', age:"29" }
     ]
   });
+  this.setState = {
+    username: 'Triblo'
+  }
   };
+
+  usernameChangedHandler = (event) => {
+    this.setState({username: event.target.value});
+  };
+
+
 
   render () {
     return (
@@ -38,6 +48,9 @@ class App extends Component {
         <h1>Hi, I'm Tricia's React App</h1>
         <p>This is really working!</p>
         <button onClick={() => this.switchNameHandler.bind(this, "Max")}>Switch Name</button>
+        <userOutput userName={this.state.username} />
+        <userOutput userName={this.state.username} />
+        <userOutput userName="Tribloss" />
         <Person 
           name={this.state.persons[0].name}
           age={this.state.persons[0].age}
