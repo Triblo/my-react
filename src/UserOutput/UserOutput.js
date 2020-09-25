@@ -1,12 +1,13 @@
 import React from 'react';
+import './UserOutput.css';
 
 const userOutput = (props) => {
   return (
-  <div>
-    <p> I am user output</p>
-    <p>I am also user output</p>
+  <div className="UserOutput">
+    <p>Username: {props.userName}</p>
+    <p>This is my username card!</p>
   </div>
-  )
+  );
 };
 
 export default userOutput;
