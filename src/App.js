@@ -1,19 +1,17 @@
 import React, { Component } from 'react';
 import './App.css';
-import UserOutput from './UserOutput/UserOutput';
-import UserInput from './UserInput/UserInput';
-/* import Person from './Person/Person'; */
+import Person from './Person/Person';
 
 class App extends Component {
   state = {
-/*     persons: [
+     persons: [
       { name: 'Tricia', age: 29 },
       { name: 'Jeff', age: 30 },
       { name: 'Max', age: 27 },
-    ], */
-    username: "Triblo"
+    ],
+    showPersons: false
   }
-/* 
+
   switchNameHandler = (newName) => {
     this.setState({
       persons: [
@@ -30,30 +28,32 @@ class App extends Component {
       { name: "Tricia", age:"40" },
       { name: event.target.value, age:"31" },
       { name: 'Max', age:"29" }
-    ]
-  }); */
-/*   this.setState = {
-    username: 'Triblo'
-  } 
-  };*/
+      ]
+    });
+  };
 
-  usernameChangedHandler = (event) => {
-    this.setState({username: event.target.value});
-  }
-
+    togglerPersonsHandler = () => {
+      const doesShow = this.state.showPersons;
+      this.setState({showPersons: !doesShow});
+    }
   render() {
-    return (
-      <div className="App">
-        <h1>Hi, I'm Tricia's React App</h1>
-        <p>This is really working!</p>
-        <UserInput changed={this.usernameChangedHandler} />
-        <UserOutput userName={this.state.username} />
-        <UserOutput userName="Tribloss" />
-{/*         <button onClick={() => this.switchNameHandler.bind(this, "Max")}>Switch Name</button>*/}
-{/*         <Person 
+    const style = {
+      backgroundColor: 'white',
+      font: 'inherit',
+      border: '2px solid green',
+      padding: '8px',
+      cursor: 'pointer'
+    };
+
+    let persons = null;
+
+    if (this.state.showPersons) {
+      persons = (
+        <div >
+        <Person 
           name={this.state.persons[0].name}
           age={this.state.persons[0].age}
-        />
+          />
         <Person
           name={this.state.persons[1].name}
           age={this.state.persons[1].age}
@@ -63,7 +63,19 @@ class App extends Component {
         <Person
           name={this.state.persons[2].name}
           age={this.state.persons[2].age}
-        /> */}
+          />
+      </div>
+      );
+    }
+
+    return (
+      <div className="App">
+        <h1>Hi, I'm Tricia's React App</h1>
+        <p>This is really working!</p>
+        <button 
+          style={style}
+          onClick={this.togglerPersonsHandler}>Toggle People</button>
+        {persons}
       </div>
     );
   };
