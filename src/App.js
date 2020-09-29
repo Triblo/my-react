@@ -12,13 +12,23 @@ class App extends Component {
     showPersons: false
   }
 
-  nameChangedHandler = (event, id) => {
+  switchNameHandler = (newName) => {
+    this.setState({
+      persons: [
+        { name: newName, age: 28},
+        { name: "Jeff", age: 40},
+        { name: "Stephanie", age: 27}
+      ]
+    })
+  };
+
+  nameChangedHandler = ( event, id ) => {
     const personIndex = this.state.persons.findIndex(p => {
       return p.id === id;
     });
 
     const person = {
-      ...this.state.persons[personIndex]
+    ...this.state.persons[personIndex]
     };
 
     person.name = event.target.value;
@@ -26,8 +36,8 @@ class App extends Component {
     const persons = [...this.state.persons];
     persons[personIndex] = person;
 
-    this.setState( {persons: persons });
-  }
+    this.setState( {persons: persons} );
+  };
 
   deletePersonHandler = (personIndex) => {
     const persons = [...this.state.persons];
@@ -47,7 +57,7 @@ class App extends Component {
       border: '2px solid green',
       padding: '8px',
       cursor: 'pointer'
-    };
+  };
 
   let persons = null;
 
@@ -56,12 +66,11 @@ class App extends Component {
       <div >
         {this.state.persons.map((person, index) => {
           return <Person
-            click={() => this.deletePersonHandler(index)}
-            name={person.name} 
+            click={() =>this.deletePersonHandler(index)}
+            name={person.name}
             age={person.age}
-            key={person.id}
-            changed={(event) => this.nameChangedHandler(event, person.id)}
-            />
+            changed={(event) => this.nameChangedHandler(event, person.id)}>
+          </Person>
         })}
     </div>
     );
@@ -70,14 +79,14 @@ class App extends Component {
   return (
     <div className="App">
       <h1>Hi, I'm Tricia's React App</h1>
-      <p>This is how fast React can run! Look at me go!</p>
+      <p>This is really working!</p>
       <button 
         style={style}
         onClick={this.togglePersonsHandler}>Toggle People</button>
       {persons}
     </div>
-  );
-};
+    );
+  };
 }
 
 export default App;
