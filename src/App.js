@@ -12,16 +12,6 @@ class App extends Component {
     showPersons: false
   }
 
-  switchNameHandler = (newName) => {
-    this.setState({
-      persons: [
-        { name: newName, age: 28},
-        { name: "Jeff", age: 40},
-        { name: "Stephanie", age: 27}
-      ]
-    })
-  };
-
   nameChangedHandler = ( event, id ) => {
     const personIndex = this.state.persons.findIndex(p => {
       return p.id === id;
@@ -52,9 +42,10 @@ class App extends Component {
 
   render() {
     const style = {
-      backgroundColor: 'white',
+      backgroundColor: 'green',
+      color: 'white',
       font: 'inherit',
-      border: '2px solid green',
+      border: '2px solid #ccc',
       padding: '8px',
       cursor: 'pointer'
   };
@@ -66,7 +57,7 @@ class App extends Component {
       <div >
         {this.state.persons.map((person, index) => {
           return <Person
-            click={() =>this.deletePersonHandler(index)}
+            click={(index) => this.deletePersonHandler(index)}
             name={person.name}
             age={person.age}
             changed={(event) => this.nameChangedHandler(event, person.id)}>
@@ -74,6 +65,7 @@ class App extends Component {
         })}
     </div>
     );
+    style.backgroundColor = 'red';
   }
 
   return (
