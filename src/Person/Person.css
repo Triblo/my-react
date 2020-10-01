@@ -5,10 +5,10 @@
   box-shadow: 0 2px 2px #ccc;
   border: 2px solid #eee;
   text-align: center;
-};
+}
 
 @media (min-width: 500px) {
   .Person {
     width: 450px;
   }
-};
+}
