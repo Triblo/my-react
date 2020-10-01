@@ -8,4 +8,19 @@
 
 .bold {
   font-weight: bold;
-}
+};
+
+.button {
+  background-color: green;
+  color: white;
+  font: inherit;
+  border: 2px solid #ccc;
+  padding: 8px;
+  cursor: pointer;
+};
+
+
+.button:hover {
+  background-color: lightgreen;
+  color: black
+};
