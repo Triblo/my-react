@@ -45,6 +45,7 @@ const cockpit = (props) => {
         className={btnClass} 
         onClick={props.clicked}>Toggle People
       </button>
+      <button onClick={props.login}>Log in</button>
     </div>
   );
 };
